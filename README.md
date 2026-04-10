@@ -65,6 +65,14 @@ Key improvements over baseline:
 
 ---
 
+## Key Contributions
+- Designed ROI-based multi-input structure (Full, Head, Hand)
+- Reduced overfitting by removing less informative regions
+- Improved generalization using CutMix augmentation
+- Conducted extensive experiments on model architecture and training strategies
+
+---
+
 ## Tech Stack
 - Python
 - PyTorch

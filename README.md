@@ -72,6 +72,12 @@ Key improvements over baseline:
 - Conducted extensive experiments on model architecture and training strategies
 
 ---
+## Experimental Insights
+- Head region is critical for distinguishing confusing classes (c0 vs c9)
+- Overly complex architectures led to overfitting on limited data
+- Data augmentation strategy significantly impacted performance
+
+---
 
 ## Tech Stack
 - Python

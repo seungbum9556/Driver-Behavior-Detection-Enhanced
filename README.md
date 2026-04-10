@@ -79,6 +79,10 @@ Key improvements over baseline:
 
 ---
 
+## Report
+Detailed analysis is available in `analysis_report.docx`.
+---
+
 ## Tech Stack
 - Python
 - PyTorch

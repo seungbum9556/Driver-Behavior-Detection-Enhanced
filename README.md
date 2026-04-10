@@ -1,35 +1,61 @@
 # Driver Behavior Detection Enhanced
 
-This project focuses on improving a baseline driver behavior detection model using a ResNet-based deep learning architecture.  
-The goal is to enhance classification performance through model optimization and improved training strategies.
+This project improves a baseline driver behavior detection model using a ResNet-based architecture.  
+Various experiments were conducted to enhance performance through input design, model architecture, and training strategies.
 
 ---
 
 ## Overview
-- Driver behavior classification using computer vision
-- Based on convolutional neural networks (ResNet)
-- Improvement over baseline model
-
----
-
-## Dataset
-- Driver behavior dataset (Kaggle)
-- Multi-class classification task
+The project focuses on classifying driver behaviors from image data.  
+Unlike a simple baseline approach, this work explores multiple design choices and analyzes their impact on performance.
 
 ---
 
 ## Method
-- ResNet-based feature extraction
-- Data preprocessing and normalization
-- Training with optimization techniques
-- Loss-based model selection
+
+### ROI-based Multi-Input Strategy
+- Input regions: Full Image, Head, Hand
+- Initially included additional regions, but removed due to overfitting and inefficiency
+- Final design uses only informative regions to improve performance
+
+### Data Augmentation
+- Color-based augmentation (brightness, contrast)
+- Spatial transformations applied carefully
+- Flip augmentation was avoided due to label inconsistency
+
+### Model Architecture
+- ResNet backbone for feature extraction
+- Experiments with attention-based structures:
+  - SE Block
+  - Tri-View Gated Head
+- Independent branch design improved representation power
 
 ---
 
 ## Improvements
-- Reduced validation loss compared to baseline
-- Improved model stability during training
-- Applied optimization strategies for better performance
+
+Key improvements over baseline:
+
+- Removal of unnecessary ROI inputs to reduce overfitting
+- Better feature focus on head region for critical class separation
+- Stabilized training through augmentation tuning
+- Use of CutMix to improve generalization
+
+---
+
+## Experiments
+
+### Failure Case Analysis
+- Confusion between "Safe Driving (c0)" and "Talking to Passenger (c9)"
+- Similar head pose caused misclassification
+
+### Augmentation Strategy
+- Mixup degraded performance due to loss of clear features
+- CutMix improved generalization and reduced overfitting
+
+### Model Design Experiments
+- Attention-based structures improved feature utilization
+- Overly complex models led to overfitting in small datasets
 
 ---
 

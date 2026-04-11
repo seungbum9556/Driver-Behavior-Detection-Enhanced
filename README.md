@@ -1,13 +1,12 @@
-# Driver Behavior Detection Enhanced
+# Driver State Classification (Image-based)
 
-This project improves a baseline driver behavior detection model using a ResNet-based architecture.  
-Various experiments were conducted to enhance performance through input design, model architecture, and training strategies.
+A computer vision model for classifying driver states using CNN-based architectures (ResNet, EfficientNet) with ROI-based multi-input design.
 
 ---
 
 ## Overview
-The project focuses on classifying driver behaviors from image data.  
-Unlike a simple baseline approach, this work explores multiple design choices and analyzes their impact on performance.
+This project focuses on classifying driver behaviors from image data.
+To improve baseline performance, various approaches were explored including ROI-based input design, model architecture optimization, and data augmentation strategies.
 
 ---
 
@@ -15,31 +14,20 @@ Unlike a simple baseline approach, this work explores multiple design choices an
 
 ### ROI-based Multi-Input Strategy
 - Input regions: Full Image, Head, Hand
-- Initially included additional regions, but removed due to overfitting and inefficiency
-- Final design uses only informative regions to improve performance
-
-### Data Augmentation
-- Color-based augmentation (brightness, contrast)
-- Spatial transformations applied carefully
-- Flip augmentation was avoided due to label inconsistency
+- Removed less informative regions to reduce overfitting
+- Final design focuses on key regions for better feature representation
 
 ### Model Architecture
 - ResNet backbone for feature extraction
-- Experiments with attention-based structures:
+- Applied attention-based techniques:
   - SE Block
   - Tri-View Gated Head
 - Independent branch design improved representation power
 
----
-
-## Improvements
-
-Key improvements over baseline:
-
-- Removal of unnecessary ROI inputs to reduce overfitting
-- Better feature focus on head region for critical class separation
-- Stabilized training through augmentation tuning
-- Use of CutMix to improve generalization
+### Data Augmentation
+- Color-based augmentation (brightness, contrast)
+- CutMix applied to improve generalization
+- Flip augmentation avoided due to label inconsistency
 
 ---
 
@@ -49,41 +37,31 @@ Key improvements over baseline:
 - Confusion between "Safe Driving (c0)" and "Talking to Passenger (c9)"
 - Similar head pose caused misclassification
 
-### Augmentation Strategy
-- Mixup degraded performance due to loss of clear features
+### Model & Augmentation Insights
 - CutMix improved generalization and reduced overfitting
-
-### Model Design Experiments
-- Attention-based structures improved feature utilization
-- Overly complex models led to overfitting in small datasets
+- Mixup degraded performance due to loss of clear features
+- Complex architectures led to overfitting on limited data
 
 ---
 
 ## Results
-- Final Kaggle Score: 0.206
-- Best Validation Loss: 0.16
+
+- **Kaggle Score: 0.206**
+- **Best Validation Loss: 0.16**
 
 ---
 
 ## Key Contributions
+
 - Designed ROI-based multi-input structure (Full, Head, Hand)
-- Reduced overfitting by removing less informative regions
 - Improved generalization using CutMix augmentation
-- Conducted extensive experiments on model architecture and training strategies
+- Reduced overfitting by removing less informative regions
+- Conducted extensive experiments on model architecture
 
----
-## Experimental Insights
-- Head region is critical for distinguishing confusing classes (c0 vs c9)
-- Overly complex architectures led to overfitting on limited data
-- Data augmentation strategy significantly impacted performance
-
----
-
-## Report
-Detailed analysis is available in `analysis_report.docx`.
 ---
 
 ## Tech Stack
+
 - Python
 - PyTorch
 - ResNet
